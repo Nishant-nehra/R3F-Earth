@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { Environment, OrbitControls } from "@react-three/drei";
+import Airplane from "./components/Airplane";
+import Earth from "./components/Earth";
+import Lights from "./components/Lights";
+import * as THREE from "three";
+import Rings from "./components/Rings";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<OrbitControls makeDefault />
+			<Lights />
+			<Environment preset="sunset" />
+			<Earth />
+			<Airplane
+				yoffset={1.8 + Math.random() * 0.4}
+				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+				randomAxis={new THREE.Vector3(
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1
+				).normalize()}
+				randomAxisRot={Math.random() * Math.PI * 2}
+			/>
+			<Airplane
+				yoffset={1.8 + Math.random() * 0.4}
+				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+				randomAxis={new THREE.Vector3(
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1
+				).normalize()}
+				randomAxisRot={Math.random() * Math.PI * 2}
+			/>
+			<Airplane
+				yoffset={1.8 + Math.random() * 0.4}
+				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+				randomAxis={new THREE.Vector3(
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1,
+					Math.random() * 2 - 1
+				).normalize()}
+				randomAxisRot={Math.random() * Math.PI * 2}
+			/>
+			<Rings />
+		</>
+	);
 }
 
 export default App;
