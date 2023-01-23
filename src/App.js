@@ -4,6 +4,7 @@ import Earth from "./components/Earth";
 import Lights from "./components/Lights";
 import * as THREE from "three";
 import Rings from "./components/Rings";
+import { Suspense } from "react";
 
 function App() {
 	return (
@@ -11,38 +12,40 @@ function App() {
 			<OrbitControls makeDefault />
 			<Lights />
 			<Environment preset="sunset" />
-			<Earth />
-			<Airplane
-				yoffset={1.8 + Math.random() * 0.4}
-				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
-				randomAxis={new THREE.Vector3(
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1
-				).normalize()}
-				randomAxisRot={Math.random() * Math.PI * 2}
-			/>
-			<Airplane
-				yoffset={1.8 + Math.random() * 0.4}
-				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
-				randomAxis={new THREE.Vector3(
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1
-				).normalize()}
-				randomAxisRot={Math.random() * Math.PI * 2}
-			/>
-			<Airplane
-				yoffset={1.8 + Math.random() * 0.4}
-				radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
-				randomAxis={new THREE.Vector3(
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1,
-					Math.random() * 2 - 1
-				).normalize()}
-				randomAxisRot={Math.random() * Math.PI * 2}
-			/>
-			<Rings />
+			<Suspense fallback={null}>
+				<Earth />
+				<Airplane
+					yoffset={1.8 + Math.random() * 0.4}
+					radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+					randomAxis={new THREE.Vector3(
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1
+					).normalize()}
+					randomAxisRot={Math.random() * Math.PI * 2}
+				/>
+				<Airplane
+					yoffset={1.8 + Math.random() * 0.4}
+					radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+					randomAxis={new THREE.Vector3(
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1
+					).normalize()}
+					randomAxisRot={Math.random() * Math.PI * 2}
+				/>
+				<Airplane
+					yoffset={1.8 + Math.random() * 0.4}
+					radius={Math.random() * Math.PI * 0.45 + Math.PI * 0.05}
+					randomAxis={new THREE.Vector3(
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1,
+						Math.random() * 2 - 1
+					).normalize()}
+					randomAxisRot={Math.random() * Math.PI * 2}
+				/>
+				<Rings />
+			</Suspense>
 		</>
 	);
 }
